@@ -1,46 +1,85 @@
-# 📋 Requirements & Planning
+# 📘 Requirements Document – Personal Finance Tracker
 
-## ✅ Functional Requirements
-- User Signup/Login
-- Add, edit, and delete income and expense records
-- Set monthly budgets
-- Generate charts (Pie, Bar) for analysis
-- View transaction history with filters
-- Display total balance and budget usage
-- Alert on overspending
-- Secure data storage with per-user access
+---
+
+## 👥 Group Members
+
+1. Rao Sufyan Khalid – Project Manager  
+2. Muzammil Faisal – Developer  
+3. Ibrahim Khawaja – Tester
+
+---
+
+## 📌 Functional Requirements
+
+1. Users can sign up and log in to their personal account.
+2. Users can add, edit, delete, and view transactions (income/expenses).
+3. Each transaction includes title, amount, category, type (income/expense), and date.
+4. Budgets can be set by category and compared against expenses.
+5. Alerts are shown if user exceeds a budget category.
+6. Dashboard displays total balance and summary.
+7. Charts (pie/bar) show financial data visually.
+8. Users can change currency and toggle dark mode.
+9. Users can reset their data completely.
+
+---
 
 ## ⚙️ Non-Functional Requirements
-- Responsive UI
-- Real-time interactivity
-- Data persistence
-- Secure authentication
-- Fast page load time
-- Accessibility support
+
+1. **Security**: Passwords must be securely hashed; users must access only their data.
+2. **Performance**: Pages should load in under 1 second with optimized chart rendering.
+3. **Usability**: UI must be clean, mobile-responsive, and easy to navigate.
+4. **Reliability**: Data persistence via XAMPP backend (MySQL or Oracle).
+5. **Maintainability**: Organized code structure using Git and GitHub.
+6. **Scalability**: System should support future features (e.g., PDF export, notifications).
 
 ---
 
-## 📌 AI-Generated User Stories (via ChatGPT)
+## 🤖 AI Tools Used in Planning Phase
 
-| User Story ID | Description |
-|---------------|-------------|
-| US01 | As a user, I want to sign up and log in so that my data is saved securely. |
-| US02 | As a user, I want to add transactions so I can track income and expenses. |
-| US03 | As a user, I want to categorize expenses so I can view charts by category. |
-| US04 | As a user, I want to view total balance so I know my financial health. |
-| US05 | As a user, I want budget alerts to warn me when I overspend. |
-| US06 | As a user, I want to generate monthly reports for income vs expense. |
-| US07 | As a user, I want to change currency and theme for personalization. |
+### Tool: **ChatGPT**
+**Purpose:** Generate clear user stories, define functional requirements, and estimate complexity.  
+**Process:**
+- Prompted ChatGPT to generate and refine user stories.
+- Used ChatGPT to define database table structure.
+- Received estimates for story points and task breakdown.
+
+### AI-Generated User Story Example:
+> As a user, I want to add, view, edit, and delete transactions so I can manage my income and expenses.
 
 ---
 
-## 📈 Task Breakdown (Planning in GitHub Projects)
+## 📋 Project Planning & Tracking
 
-Each story is broken into tasks with labels and story points:
-- US01: Auth system (5 pts)
-- US02: Add/edit/delete transactions (5 pts)
-- US03: Category tagging (3 pts)
-- US04: Balance calculation (2 pts)
-- US05: Budget alerts (3 pts)
-- US06: Charts and filters (4 pts)
-- US07: Theme + currency toggle (2 pts)
+### Tool: **GitHub Projects Board**
+
+- Used GitHub Projects (table view) to manage tasks across SDLC phases.
+- Fields included: Task Title, Description, Phase, Story Points, Assignee, AI Tool Used.
+- Each task is linked to one SDLC phase (e.g., Planning, Development, Testing).
+
+---
+
+## 🖼️ Screenshots
+
+### 📷 Figure 1: ChatGPT prompt for requirement analysis
+_Attached screenshot showing how ChatGPT generated user stories and helped refine requirements._
+
+![Figure 1 – ChatGPT Requirement Analysis](./screenshots/figure-1-chatgpt-requirements.png)
+
+---
+
+### 📷 Figure 2: GitHub Project Board Overview
+_Screenshot of GitHub Project Board showing all tasks, phases, story points, and assignments._
+
+![Figure 2 – GitHub Project Board](./screenshots/figure-2-github-project-board.png)
+
+---
+
+## ✅ Summary
+
+In the Planning & Requirements Phase:
+- Used **ChatGPT** to assist in generating user stories and estimating complexity.
+- Tracked all stories and tasks using **GitHub Projects**.
+- Functional and non-functional requirements were structured based on real-world financial tracker needs.
+
+This phase ensures a well-defined scope and smooth coordination among team members.
