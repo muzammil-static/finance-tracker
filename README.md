@@ -11,10 +11,10 @@ A responsive web application to manage personal finances, track income/expenses,
 
 ## SDLC Phases & AI Tools
 
-Planning & Requirements => ChatGPT, GitHub Projects 
-Design => Lucidchart AI 
-Development => GitHub Copilot 
-Testing => Testim, Applitools 
+Planning & Requirements => ChatGPT, GitHub Projects |
+Design => Lucidchart AI |
+Development => GitHub Copilot |
+Testing => Testim, Applitools |
 Deployment => GitHub Actions 
 
 
