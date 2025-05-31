@@ -1,0 +1,604 @@
+/* Budget Page Layout */
+body.dark {
+    background: #222 !important;
+    color: #fff !important;
+    /* Styles moved from @media (prefers-color-scheme: dark) */
+    .budget-form,
+    .budget-list {
+        background-color: #2d2d2d;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    }
+
+    .form-group input,
+    .form-group select {
+        background-color: #363636;
+        border-color: #404040;
+        color: #e1e1e1;
+    }
+
+    .form-group input:hover,
+    .form-group select:hover {
+        border-color: #4cb050;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #4cb050;
+        box-shadow: 0 4px 12px rgba(76, 176, 80, 0.2);
+    }
+
+    .budget-item {
+        border-bottom-color: #404040;
+    }
+
+    .budget-item:hover {
+        background-color: #363636;
+    }
+
+    .budget-category {
+        color: #e1e1e1;
+    }
+
+    #budget-form input {
+        background-color: #363636;
+        color: #e1e1e1;
+    }
+
+    #budget-form input:focus {
+        border-color: #4cb050;
+        box-shadow: 0 4px 8px rgba(76, 176, 80, 0.2);
+    }
+    table{
+        background-color: #2d2d2d;
+    }
+    tbody tr:hover{
+        background-color: #444;
+    }
+    td{
+        border-bottom-color: #404040;
+    }
+}
+body.light {
+    background: #fff !important;
+    color: #222 !important;
+    /* Add explicit light mode styles if needed, or ensure defaults cover them */
+    .budget-form,
+    .budget-list {
+        background-color: #fff; /* Assuming default light background */
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Assuming default light shadow */
+    }
+
+    .form-group input,
+    .form-group select {
+        background-color: #f0f0f0; /* Assuming default light background */
+        border-color: #e0e0e0; /* Assuming default light border */
+        color: #333; /* Assuming default light text color */
+    }
+
+    .form-group input:hover,
+    .form-group select:hover {
+        border-color: #4cb050; /* Assuming default hover border */
+    }
+
+    .form-group input:focus,
+    .form-group select:focus {
+        border-color: #4cb050; /* Assuming default focus border */
+        box-shadow: 0 4px 12px rgba(76, 176, 80, 0.15); /* Assuming default focus shadow */
+    }
+
+    .budget-item {
+        border-bottom-color: #eee; /* Assuming default light border */
+    }
+
+    .budget-item:hover {
+        background-color: #f8f9fa; /* Assuming default light hover */
+    }
+
+    .budget-category {
+        color: #333; /* Assuming default light text */
+    }
+
+    #budget-form input {
+        background-color: #f0f0f0; /* Assuming default light background */
+        color: #333; /* Assuming default light text */
+    }
+
+    #budget-form input:focus {
+        border-color: #4cb050; /* Assuming default focus border */
+        box-shadow: 0 4px 8px rgba(76, 176, 80, 0.1); /* Assuming default focus shadow */
+    }
+    table{
+        background-color: #fff;
+    }
+}
+
+.budget {
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Budget Form */
+#budget-form {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin: 30px 0px;
+    flex-wrap: wrap;
+}
+
+#budget-form input, 
+#budget-form button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+#budget-form #category, #budget-form #budget-amount {
+    background-color: #f0f0f0; 
+    color: #333;
+    border: 2px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    min-width: 200px;
+}
+
+#budget-form #category:focus, #budget-form #budget-amount:focus{
+    outline: none;
+    background-color: white;
+    border-color: #4cb050;
+    box-shadow: 0 4px 8px rgba(76, 176, 80, 0.1);
+    transform: translateY(-2px);
+}
+
+#budget-form #submit-btn {
+    background: var(--background);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#budget-form #cancel-btn{
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+#budget-form #submit-btn:hover {
+    background-color: #45a049;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 176, 80, 0.2);
+}
+
+#budget-form button:active {
+    transform: translateY(0);
+}
+
+/* Budget Table */
+table {
+    width: 100%;
+    border-collapse: separate;
+    margin: 20px 0;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    overflow: hidden;
+}
+thead{
+    background: var(--background);
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+th {
+    /* background-color: #4cb050;
+    color: white; */
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    letter-spacing: 0.5px;
+}
+
+tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* tr:hover {
+    background-color: #f8f9fa;
+} */
+
+
+/* Progress Bar */
+.progress-container {
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 12px;
+    margin: 15px 0;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress {
+    height: 100%;
+    text-align: center;
+    color: white;
+    font-size: 12px;
+    line-height: 20px;
+    transition: width 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Add this new style to center the percentage text */
+.progress::after {
+    content: attr(data-percentage);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    z-index: 1;
+    white-space: nowrap;
+}
+
+.budget-container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.budget-form {
+    background-color: var(--background-color);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 2rem;
+    transition: transform var(--transition-speed) ease;
+}
+
+.budget-form:hover {
+    transform: translateY(-3px);
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.form-group input:hover,
+.form-group select:hover {
+    border-color: #4cb050;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #4cb050;
+    box-shadow: 0 4px 12px rgba(76, 176, 80, 0.15);
+    transform: translateY(-2px);
+}
+
+.budget-list {
+    background-color: var(--background-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    animation: slideUp 0.5s ease-out;
+}
+
+.budget-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color var(--transition-speed) ease;
+}
+
+.budget-item:last-child {
+    border-bottom: none;
+}
+
+.budget-item:hover {
+    background-color: var(--hover-color);
+}
+
+.budget-info {
+    flex: 1;
+}
+
+.budget-category {
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.budget-amount {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.budget-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+
+/* .btn{
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+} */
+tr .edit-btn, tr .delete-btn{
+    padding: 8px 16px;
+    margin: 2px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    align-items: center;
+    gap: 6px;
+}
+/* .btn-primary {
+    background: linear-gradient(135deg, #4cb050, #45a049);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 176, 80, 0.2);
+} */
+
+tr .delete-btn{
+    background: linear-gradient(135deg, #dc3545, #c82333);
+    color: white;
+}
+
+tr .delete-btn:hover, #budget-form #cancel-btn:hover {
+    background: linear-gradient(135deg, #c82333, #bd2130);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.edit-btn {
+    background-color: #2196F3;  /* Material Design Blue */
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #1976D2;  /* Darker shade of blue */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(33, 150, 243, 0.2);  /* Blue shadow */
+}
+
+@media (max-width: 768px) {
+    .budget {
+        width: 95%;
+        margin: 10px auto;
+    }
+
+    #budget-form {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        padding: 10px;
+    }
+
+    #budget-form #category, 
+    #budget-form #budget-amount {
+        width: 100%;
+        min-width: unset;
+    }
+
+    /* #budget-form button {
+        width: 100%;
+        padding: 12px;
+    } */
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        margin: 10px 0;
+    }
+
+    th, td{
+        padding: 10px;
+    }
+    th{
+        font-weight: 500;
+        font-size: 12px;
+    }
+    tbody tr{
+        font-size: 12px;
+    }
+
+    .budget-container {
+        width: 100%;
+        padding: 1rem;
+        margin: 1rem auto;
+    }
+
+    .budget-form {
+        padding: 1rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .budget-item {
+        flex-direction: column;
+        padding: 0.8rem;
+    }
+
+    .budget-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+
+    tr button.edit-btn,
+    tr button.delete-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+        width: auto;
+        min-width: 70px;
+    }
+
+    .progress-container {
+        margin: 10px 0;
+    }
+
+    /* Improve touch targets */
+    .btn,
+    button,
+    input,
+    select {
+        min-height: 30px; /* Minimum touch target size */
+    }
+
+    /* Improve table readability on mobile */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin: 0 -1rem;
+        padding: 0 1rem;
+    }
+
+    /* Stack form elements */
+    .form-group {
+        margin-bottom: 0.8rem;
+    }
+
+    .form-group label {
+        font-size: 0.9em;
+        margin-bottom: 0.3rem;
+    }
+
+    /* Adjust spacing for better mobile view */
+    .budget-category {
+        font-size: 1.1em;
+        margin-bottom: 0.2rem;
+    }
+
+    .budget-amount {
+        font-size: 1em;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .budget {
+        width: 100%;
+        padding: 10px;
+    }
+
+    #budget-form {
+        padding: 5px;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 0.85em;
+    }
+
+    .budget-container {
+        padding: 0.5rem;
+    }
+
+    .budget-form {
+        padding: 0.8rem;
+    }
+
+    tr button {
+        padding: 6px 10px;
+        font-size: 0.75em;
+    }
+
+    .budget-actions {
+        flex-wrap: wrap;
+        gap: 0.3rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85em;
+    }
+}
+
+/* Landscape orientation adjustments */
+@media (max-height: 480px) and (orientation: landscape) {
+    .budget-container {
+        margin: 0.5rem auto;
+    }
+
+    .form-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #budget-form {
+        flex-direction: row;
+    }
+}
