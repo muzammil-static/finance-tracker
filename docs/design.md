@@ -11,7 +11,7 @@ To generate clean, structured design visuals including UI wireframes, system arc
 
 ## 1. 🖼️ Wireframe – Dashboard Page
 
-> Description: Wireframe created using Lucidchart AI showing Total Balance, Recent Transactions, Budget Summary (Progress Bars).
+> Description: Wireframe created using Figma showing Total Balance, Recent Transactions, Budget Summary (Progress Bars).
 
 **Screenshot**:  
 ![Figure 3 – Dashboard Page Wireframe](./screenshots/figure-3-dashboard-wireframe.png)
@@ -42,7 +42,7 @@ To generate clean, structured design visuals including UI wireframes, system arc
 
 ## ✅ Summary
 
-Using **Lucidchart AI**, we generated the following artifacts to enhance clarity and development speed:
+Using **Lucidchart AI** and **Figma**, we generated the following artifacts to enhance clarity and development speed:
 
 - Clean wireframes for key pages.
 - A high-level system architecture diagram.
