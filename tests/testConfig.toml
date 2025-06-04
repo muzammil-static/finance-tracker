@@ -1,0 +1,3 @@
+[javascript]
+testingFramework = "Mocha"
+mockingFramework = "chai-spies"
