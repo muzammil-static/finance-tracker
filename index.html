@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="faviconFT.png" />
+    <title>Finance Tracker - Home</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      .hero {
+        position: relative;
+        width: 100%;
+        min-height: 80vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        z-index: 1;
+      }
+
+      .heroIMG {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        z-index: 0;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 800px;
+        padding: 0 20px;
+        color: white;
+      }
+
+      .hero-content h1 {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+      }
+
+      .logo-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px #4cb050;
+        background: linear-gradient(135deg, #4cb050 50%, #333 100%);
+        transition: transform var(--transition-speed) ease;
+      }
+      .logo-img:hover {
+        transform: scale(1.1);
+      }
+      footer {
+        height: auto;
+        min-height: 300px;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+        font-weight: 500;
+        background-color: #333333;
+        color: #ffffff;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-content: center;
+        padding: 40px 20px;
+        box-sizing: border-box;
+      }
+      .footer-grid {
+        max-width: 1200px;
+        margin: auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 40px;
+        padding-bottom: 30px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        width: 100%;
+      }
+      .footer-section {
+        padding: 0 15px;
+      }
+      .footer-section h3 {
+        font-size: 16px;
+        margin-bottom: 20px;
+        color: white;
+        text-transform: uppercase;
+        position: relative;
+      }
+      .footer-section h3::after {
+        content: '';
+        position: absolute;
+        left: 45%;
+        bottom: -8px;
+        width: 30px;
+        height: 2px;
+        background-color: #4cb050;
+      }
+      .footer-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .footer-section ul li {
+        margin-bottom: 12px;
+      }
+      .footer-section ul li a {
+        color: white;
+        opacity: 0.7;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-block;
+        font-size: 14px;
+      }
+      .footer-section ul li a:hover {
+        opacity: 1;
+        color: #4cb050;
+        transform: translateX(5px);
+      }
+      .brand-title {
+        text-align: center;
+        font-size: 24px;
+        margin-bottom: 15px;
+        color: #ffffff;
+        gap: 10px;
+      }
+      .logo-heading {
+        color: white;
+      }
+      .footer-description {
+        font-size: 14px;
+        color: #a0aec0;
+        max-width: 300px;
+        line-height: 1.6;
+        margin: 15px 0;
+      }
+      .footer-section p {
+        font-size: 14px;
+        color: #e6f0ff;
+        line-height: 1.6;
+        margin-bottom: 8px;
+      }
+      .footer-section a {
+        color: #e6f0ff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .footer-section a:hover {
+        color: #4cb050;
+      }
+      .social-icons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+      .social-icons a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        transition: all 0.3s ease;
+        /* transition: transform var(--transition-speed) ease; */
+      }
+      .social-icons a:hover {
+        /* transform: scale(1.1); */
+        background: linear-gradient(135deg, #4cb050 50%, #333 100%);
+        transform: translateY(-3px);
+      }
+      .footer-bottom {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 14px;
+        color: white;
+        opacity: 0.7;
+        width: 100%;
+        padding-top: 20px;
+      }
+      /* Responsive Styles */
+      @media screen and (max-width: 1024px) {
+        .footer-grid {
+          gap: 30px;
+        }
+        .footer-section {
+          padding: 0 10px;
+        }
+      }
+      @media screen and (max-width: 768px) {
+        footer {
+          padding: 30px 15px;
+        }
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 25px;
+        }
+        .footer-section {
+          text-align: center;
+        }
+        .footer-section h3::after {
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        .brand-title {
+          justify-content: center;
+        }
+        .footer-description {
+          margin: 15px auto;
+        }
+        .social-icons {
+          justify-content: center;
+        }
+      }
+      @media screen and (max-width: 480px) {
+        footer {
+          padding: 25px 10px;
+        }
+        .footer-grid {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .footer-section {
+          padding: 0 5px;
+        }
+        .footer-section h3 {
+          font-size: 15px;
+          margin-bottom: 15px;
+        }
+        .brand-title {
+          font-size: 20px;
+        }
+        .logo-img {
+          width: 40px;
+          height: 40px;
+        }
+        .footer-description {
+          font-size: 13px;
+        }
+        .social-icons {
+          gap: 10px;
+        }
+        .social-icons a {
+          width: 30px;
+          height: 30px;
+          font-size: 14px;
+        }
+        .footer-bottom {
+          font-size: 12px;
+          margin-top: 20px;
+        }
+      }
+      /* Dark mode adjustments */
+      .dark-mode .hero::before {
+        background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6));
+      }
+
+      /* Dropdown Menu Styles */
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: black;
+        min-width: 200px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .dropdown-content a {
+        text-align: center;
+        color: white;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        transition: all 0.3s ease;
+        font-size: 14px;
+      }
+
+      .dropdown-content a:hover{
+        background-color: #f8f9fa;
+        color: #4cb050;
+      }
+      
+      .dropdown-content a i {
+        margin-right: 8px;
+        width: 20px;
+        text-align: center;
+      }
+
+      .dropdown-trigger {
+        display: flex;
+        align-items: center;
+        color: white;
+        gap: 5px;
+        cursor: pointer;
+        padding: 8px 12px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+      .dropdown-trigger span{
+        font-weight: 600;
+        position: relative;
+        transition: color var(--transition-speed) ease;
+      }
+
+      .dropdown-trigger span::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width var(--transition-speed) ease;
+      }
+      .dropdown-trigger span:hover{
+        color: var(--primary-color);
+      }
+      .dropdown-trigger span:hover::after{
+        width: 100%;
+      }
+
+      .dropdown-trigger i {
+        font-size: 12px;
+        transition: transform 0.3s ease;
+      }
+
+      @media screen and (max-width: 768px) {
+        .dropdown-content {
+          position: static;
+          box-shadow: none;
+          background-color: transparent;
+          min-width: 100%;
+          opacity: 1;
+          transform: none;
+          display: none;
+        }
+
+        .dropdown.active .dropdown-content {
+          display: block;
+        }
+
+        .dropdown-content a {
+          padding: 10px 20px;
+          color: #fff;
+        }
+
+        .dropdown-content a:hover {
+          background-color: rgba(255, 255, 255, 0.1);
+          padding-left: 25px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-title">
+        <img src="LogoFT33.png" />
+        <h2>Finance Tracker</h2>
+      </div>
+
+      <!-- Hamburger Menu Button -->
+      <button id="menu-btn" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+      <!-- Sidebar Menu -->
+      <ul class="nav-links" id="nav-links">
+        <button id="close-btn" aria-label="Close menu">×</button>
+        <li>
+          <i class="fa-sharp fa-solid fa-house"></i
+          ><a href="index.html">Home</a>
+        </li>
+        <li class="dropdown">
+          <div class="dropdown-trigger">
+            <i class="fas fa-shield-alt"></i>
+            <span>Privacy & Legal</span>
+            <i class="fas fa-chevron-down"></i>
+          </div>
+          <div class="dropdown-content">
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms of Service</a>
+            <a href="cookie-policy.html">Cookie Policy</a>
+            <a href="security-notice.html">Security Notice</a>
+          </div>
+        </li>
+        <li>
+          <i class="fas fa-right-to-bracket"></i><a href="login.html">Login</a>
+        </li>
+        
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+      <img src="heroImg1.jpg" alt="Finance Tracker Hero" class="heroIMG" />
+      <div class="hero-content">
+        <h1>Track Your Finances Smartly</h1>
+        <p>
+          Manage budgets, monitor expenses, and get insights. All in one place.
+        </p>
+        <button id="hero-btn">
+          <a href="signup.html" class="btn primary">Get Started</a>
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+      <h2>Features</h2>
+      <div class="feature-list">
+        <div class="feature">
+          <i class="fas fa-wallet"></i>
+          <h3>Track Income & Expenses</h3>
+          <p>Log all transactions easily and get real-time totals.</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-chart-line"></i>
+          <h3>Reports & Analytics</h3>
+          <p>
+            Visualize your spending habits and identify savings opportunities.
+          </p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-user-lock"></i>
+          <h3>Secure & Private</h3>
+          <p>Your financial data is encrypted and protected.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+      <div class="about-content">
+        <h2>About Finance Tracker</h2>
+        <p>
+          Finance Tracker is your personal finance assistant, designed to
+          simplify budgeting, saving, and managing expenses. Whether you're a
+          student or a working professional, our tool empowers you to stay in
+          control of your money.
+        </p>
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="footer" id="contact">
+      <div class="footer-grid">
+        <div class="footer-section brand">
+          <h2 class="brand-title">
+            Finance <span class="logo-heading">Tracker</span>
+          </h2>
+          <img src="LogoFT33.png" alt="Finance Tracker Logo" class="logo-img" />
+          <p class="footer-description">
+            Manage budgets, monitor expenses, and get insights. All in one
+            place.
+          </p>
+        </div>
+
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="dashboard.php">Dashboard</a></li>
+            <li><a href="settings.php">Settings</a></li>
+            <li><a href="signup.php">Signup</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Privacy & Legal</h3>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie-policy.html">Cookie Policy</a></li>
+            <li><a href="security-notice.html">Security Notice</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>
+            Email:
+            <a href="mailto:financetracker43@gmail.com"
+              >financetracker43@gmail.com</a
+            >
+          </p>
+          <p>Phone: +92-3061574937</p>
+          <div class="social-icons">
+            <a href="#" aria-label="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="LinkedIn"
+              ><i class="fab fa-linkedin-in"></i
+            ></a>
+            <a href="#" aria-label="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Muzammil Faisal. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Theme Management
+      function initializeTheme() {
+        const savedTheme = localStorage.getItem("theme") || "light";
+        applyTheme(savedTheme);
+      }
+
+      function applyTheme(theme) {
+        document.body.classList.remove("light-mode", "dark-mode");
+        document.body.classList.add(
+          theme === "dark" ? "dark-mode" : "light-mode"
+        );
+        localStorage.setItem("theme", theme);
+      }
+
+      // Listen for theme changes from other pages
+      window.addEventListener("themeChanged", (e) => {
+        applyTheme(e.detail.theme);
+      });
+
+      // Add storage event listener for theme changes
+      window.addEventListener("storage", (e) => {
+        if (e.key === "theme") {
+          applyTheme(e.newValue);
+        }
+      });
+      initializeTheme();
+    </script>
+    <script src="nav.js"></script>
+  </body>
+</html>
