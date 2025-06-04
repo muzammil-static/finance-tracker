@@ -26,9 +26,9 @@ To ensure the reliability of core application functions by generating and execut
    - `reportsScript.test.js`
 5. Reviewed and ran the test cases locally.
 6. Took screenshots of both the Qodo Gen interface and the generated test files.
-**[Figure 8 – Qodo Gen Interface in VS Code](../docs/screenshots/Figure-8-Qodo-Gen-Interface-in-VS-Code.png)**
-**[Figure 9 – Generated test case: renderBudgetTableFromJSON()](../docs/screenshots/Figure-9-Generated-test-cases.png)**
-**[Figure 10 – Generated test case: initializeIncomeChart()](../docs/screenshots/Figure-10-Generated-test-cases.png)**
+![Figure 8 – Qodo Gen Interface in VS Code](./screenshots/Figure-8-Qodo-Gen-Interface-in-VS-Code.png)
+![Figure 9 –  Generated test case: renderBudgetTableFromJSON()](./screenshots/Figure-9-Generated-test-cases.png)
+![Figure 10 –  Generated test case: initializeIncomeChart()](./screenshots/Figure-10-Generated-test-cases.png)
 ---
 
 ## ✅ Test Snippets
