@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="images/faviconFT.png" />
+    <link rel="icon" type="image/png" href="faviconFT.png" />
     <title>Finance Tracker - Home</title>
-    <link rel="stylesheet" href="styles/style.css" />
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
       rel="stylesheet"
@@ -15,15 +15,628 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <style>
+      :root {
+            --primary-color: #4cb050;
+            --secondary-color: #333;
+            --background-color: #f8f9fa;
+            --background: linear-gradient(135deg, #4cb050 0%, #333 100%);
+            --text-color: #2c3e50;
+            --feature-color: white;
+            --about-back: white;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --transition-speed: 0.3s;
+            --border-radius: 10px;
+            --border-color: #eee;
+            --hover-color: #f8f9fa;
+            --gradient-primary: linear-gradient(135deg, #4cb050 0%, #2e7d32 100%);
+            --gradient-secondary: linear-gradient(135deg, #333 0%, #1a1a1a 100%);
+        }
+        body.dark{
+            --primary-color: #4cb050;
+            --secondary-color: #ffffff;
+            --background-color: #1a1a1a;
+            --background: #458e48;
+            --text-color: #e1e1e1;
+            --feature-color: #333;
+            --about-back: #2d2d2d;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            --border-color: #404040;
+            --hover-color: #363636;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "Roboto", sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+        }
+        /* Navbar with modern styling */
+        .navbar {
+            background-color: #333;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all var(--transition-speed) ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar:hover {
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Logo & Title with animations */
+        .nav-title {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-title img {
+            width: 60px;
+            height: 60px;
+            margin-right: 1rem;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #4cb050;
+            background: linear-gradient(135deg, #4cb050 50%, #333 100%);
+            transition: transform var(--transition-speed) ease;
+        }
+
+        .nav-title img:hover {
+            transform: scale(1.1);
+        }
+
+        .nav-title h2 {
+            margin: 0;
+            color: #ffffff;
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        /* Modern Navbar Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li a,i {
+            padding: 0.5rem 0.2rem;
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            position: relative;
+            transition: color var(--transition-speed) ease;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width var(--transition-speed) ease;
+        }
+
+        .nav-links li a:hover{
+            color: var(--primary-color);
+        }
+
+        .nav-links li a:hover::after {
+            width: 100%;
+        }
+        /* Mobile Menu Toggle Button */
+        #menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            
+            transition: transform var(--transition-speed) ease;
+        }
+
+        #menu-btn .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: #ffffff;
+            transition: all var(--transition-speed) ease;
+        }
+
+        #menu-btn:hover {
+            transform: scale(1.1);
+        }
+
+        #close-btn {
+            display: none;
+            background: #2d2d2d;
+            border: none;
+            cursor: pointer;
+            font-size: 3rem;
+            color: #ffffff;
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            z-index: 1002;
+            transition: transform var(--transition-speed) ease;
+        }
+
+        #close-btn:hover {
+            transform: rotate(90deg);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+        @media screen and (max-width: 768px){
+            .navbar {
+                justify-content: space-between;
+                align-items: center;
+                display: flex;
+            }
+
+            #menu-btn {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -280px;
+                width: 280px;
+                height: 100vh;
+                background-color: #2d2d2d;
+                flex-direction: column;
+                padding: 4rem 2rem 2rem;
+                gap: 1.5rem;
+                transition: right var(--transition-speed) ease-in-out;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                z-index: 1000;
+            }
+
+            .nav-links.show {
+                right: 0;
+            }
+
+            .nav-links.show + #menu-btn .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .nav-links.show + #menu-btn .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .nav-links.show + #menu-btn .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            #close-btn {
+                display: block;
+            }
+
+            .nav-title h2 {
+                font-size: 1.4rem;
+            }
+        }
+      .hero h1 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeSlideIn 1.2s ease-out forwards;
+      }
+      @keyframes fadeSlideIn{
+          to{
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+      .hero p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeSlideIn 1.2s ease-out forwards;
+      }
+      #hero-btn{
+          width: 40%;
+          max-width: 150px;
+          padding: 10px 0px;
+          background-color: #4cb050;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          transition: all 0.3s ease;
+      }
+      #hero-btn:hover{
+          transform: translateY(-3px);
+          box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+      }
+      #hero-btn a{
+          text-decoration: none;
+          color: white;
+          font-weight: 600;
+      }
+      .btn-primary {
+          background-color: white;
+          color: #4cb050;
+          padding: 0.8rem 1.5rem;
+          border-radius: 30px;
+          text-decoration: none;
+          font-weight: bold;
+          transition: background 0.3s ease;
+      }
+      .btn-primary:hover {
+          background-color: #f1f1f1;
+      }
+
+      /* Features Section */
+      .features {
+          padding: 5rem 2rem;
+          text-align: center;
+          background-color: var(--background-color);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .features::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, rgba(76, 176, 80, 0.05) 0%, rgba(51, 51, 51, 0.05) 100%);
+          z-index: 0;
+      }
+
+      .features h2 {
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+          position: relative;
+          display: inline-block;
+      }
+
+      .features h2::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background: var(--gradient-primary);
+          border-radius: 2px;
+      }
+
+      .feature-list {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 3rem;
+          margin: 3rem auto;
+          max-width: 1400px;
+          position: relative;
+          z-index: 1;
+      }
+
+      .feature {
+          display: flex;
+          align-items: flex-start;
+          gap: 2rem;
+          padding: 2rem;
+          background: var(--feature-color);
+          border-radius: 20px;
+          position: relative;
+          overflow: hidden;
+          transition: all 0.4s ease;
+      }
+
+      .feature::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(135deg, rgba(76, 176, 80, 0.1) 0%, rgba(51, 51, 51, 0.1) 100%);
+          opacity: 0;
+          transition: opacity 0.4s ease;
+      }
+
+      .feature:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      }
+
+      .feature:hover::before {
+          opacity: 1;
+      }
+
+      .feature-icon {
+          flex-shrink: 0;
+          width: 80px;
+          height: 80px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, #4cb050 0%, #2e7d32 100%);
+          border-radius: 20px;
+          position: relative;
+          overflow: hidden;
+      }
+
+      .feature-icon::before {
+          content: '';
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+          transform: translateX(-100%);
+          transition: transform 0.6s ease;
+      }
+
+      .feature:hover .feature-icon::before {
+          transform: translateX(100%);
+      }
+
+      .feature-icon i {
+          font-size: 2.5rem;
+          color: white;
+          z-index: 1;
+      }
+
+      .feature-content {
+          text-align: left;
+          flex: 1;
+      }
+
+      .feature-content h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--text-color);
+          position: relative;
+          display: inline-block;
+      }
+
+      .feature-content h3::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: var(--primary-color);
+          transition: width 0.3s ease;
+      }
+
+      .feature:hover .feature-content h3::after {
+          width: 100%;
+      }
+
+      .feature-content p {
+          color: #666;
+          line-height: 1.6;
+          margin: 0;
+      }
+
+      @media screen and (max-width: 1024px) {
+          .feature-list {
+              grid-template-columns: 1fr;
+              gap: 2rem;
+          }
+      }
+
+      @media screen and (max-width: 768px) {
+          .feature {
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+              padding: 1.5rem;
+          }
+
+          .feature-content {
+              text-align: center;
+          }
+
+          .feature-content h3::after {
+              left: 50%;
+              transform: translateX(-50%);
+          }
+      }
+
+      /* About Section */
+      .about {
+          padding: 5rem 2rem;
+          background-color: var(--about-back);
+          color: var(--text-color);
+          position: relative;
+          overflow: hidden;
+      }
+
+      .about::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, rgba(76, 176, 80, 0.05) 0%, rgba(51, 51, 51, 0.05) 100%);
+          z-index: 0;
+      }
+
+      .about-container {
+          max-width: 1200px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+      }
+
+      .about-header {
+          text-align: center;
+          margin-bottom: 3rem;
+      }
+
+      .about-header h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          position: relative;
+          display: inline-block;
+      }
+
+      .about-header h2::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background: var(--gradient-primary);
+          border-radius: 2px;
+      }
+
+      .about-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+      }
+
+      .about-card {
+          background: white;
+          padding: 2rem;
+          border-radius: 15px;
+          box-shadow: var(--box-shadow);
+          transition: transform 0.3s ease;
+      }
+
+      .about-card:hover {
+          transform: translateY(-5px);
+      }
+
+      .about-card i {
+          font-size: 2.5rem;
+          color: var(--primary-color);
+          margin-bottom: 1rem;
+      }
+
+      .about-card h3 {
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          color: var(--text-color);
+      }
+
+      .about-card p {
+          color: #666;
+          line-height: 1.6;
+      }
+
+      .about-content {
+          text-align: center;
+          max-width: 800px;
+          margin: 0 auto 3rem;
+          font-size: 1.1rem;
+          line-height: 1.8;
+      }
+
+      .about-stats {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          margin-top: 3rem;
+          text-align: center;
+      }
+
+      .stat-box {
+          padding: 1.5rem;
+          background: white;
+          border-radius: 10px;
+          box-shadow: var(--box-shadow);
+      }
+
+      .stat-box h4 {
+          font-size: 2rem;
+          color: var(--primary-color);
+          margin-bottom: 0.5rem;
+      }
+
+      .stat-box p {
+          color: #666;
+          font-size: 1.1rem;
+      }
+
+      @media screen and (max-width: 768px) {
+          .about-grid {
+              grid-template-columns: 1fr;
+          }
+
+          .about-stats {
+              grid-template-columns: 1fr;
+          }
+      }
+
       .hero {
         position: relative;
         width: 100%;
-        min-height: 80vh;
+        min-height: 90vh;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
         overflow: hidden;
+        background: var(--gradient-secondary);
+      }
+
+      .hero-slider {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .hero-slide {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+      }
+
+      .hero-slide.active {
+        opacity: 1;
+      }
+
+      .hero-slide img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
       }
 
       .hero::before {
@@ -33,39 +646,42 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
         z-index: 1;
-      }
-
-      .heroIMG {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 0;
       }
 
       .hero-content {
         position: relative;
         z-index: 2;
-        max-width: 800px;
+        max-width: 1000px;
         padding: 0 20px;
         color: white;
       }
 
       .hero-content h1 {
-        font-size: 3.5rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        color: #ffffff;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        animation: fadeInUp 1s ease-out forwards;
+        opacity: 1;
+        letter-spacing: 1px;
+        line-height: 1.2;
+      }
+
+      @keyframes shine {
+        to {
+          background-position: 200% center;
+        }
       }
 
       .hero-content p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        animation: fadeInUp 1.2s ease-out forwards;
+        opacity: 1;
       }
 
       .logo-img {
@@ -116,9 +732,9 @@
         position: relative;
       }
       .footer-section h3::after {
-        content: '';
+        content: "";
         position: absolute;
-        left: 45%;
+        left: 6.5rem;
         bottom: -8px;
         width: 30px;
         height: 2px;
@@ -296,7 +912,7 @@
         position: absolute;
         background-color: black;
         min-width: 200px;
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         z-index: 1000;
         opacity: 0;
@@ -320,11 +936,11 @@
         font-size: 14px;
       }
 
-      .dropdown-content a:hover{
+      .dropdown-content a:hover {
         background-color: #f8f9fa;
         color: #4cb050;
       }
-      
+
       .dropdown-content a i {
         margin-right: 8px;
         width: 20px;
@@ -341,14 +957,14 @@
         border-radius: 4px;
         transition: background-color 0.3s ease;
       }
-      .dropdown-trigger span{
+      .dropdown-trigger span {
         font-weight: 600;
         position: relative;
         transition: color var(--transition-speed) ease;
       }
 
       .dropdown-trigger span::after {
-        content: '';
+        content: "";
         position: absolute;
         bottom: -2px;
         left: 0;
@@ -357,10 +973,10 @@
         background-color: var(--primary-color);
         transition: width var(--transition-speed) ease;
       }
-      .dropdown-trigger span:hover{
+      .dropdown-trigger span:hover {
         color: var(--primary-color);
       }
-      .dropdown-trigger span:hover::after{
+      .dropdown-trigger span:hover::after {
         width: 100%;
       }
 
@@ -392,6 +1008,343 @@
         .dropdown-content a:hover {
           background-color: rgba(255, 255, 255, 0.1);
           padding-left: 25px;
+        }
+      }
+
+      /* New Statistics Section */
+      .statistics {
+          padding: 5rem 2rem;
+          background: var(--gradient-secondary);
+          color: white;
+          text-align: center;
+      }
+
+      .stats-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 2rem;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+
+      .stat-item {
+          padding: 2rem;
+          background: rgba(255, 255, 255, 0.1);
+          border-radius: 15px;
+          backdrop-filter: blur(10px);
+          transition: transform 0.3s ease;
+      }
+
+      .stat-item:hover {
+          transform: translateY(-5px);
+      }
+
+      .stat-number {
+          font-size: 3rem;
+          font-weight: 700;
+          color: var(--primary-color);
+          margin-bottom: 0.5rem;
+      }
+
+      .stat-label {
+          font-size: 1.2rem;
+          color: #fff;
+      }
+
+      /* Updated Testimonials Section */
+      .testimonials {
+          padding: 5rem 2rem;
+          background-color: var(--background-color);
+          text-align: center;
+          overflow: hidden;
+          position: relative;
+      }
+
+      .testimonials h2 {
+          font-size: 2.5rem;
+          margin-bottom: 3rem;
+          position: relative;
+          display: inline-block;
+      }
+
+      .testimonials h2::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 80px;
+          height: 3px;
+          background: var(--gradient-primary);
+          border-radius: 2px;
+      }
+
+      .testimonial-container {
+          display: flex;
+          gap: 2rem;
+          animation: slideTestimonials 60s linear infinite;
+          width: max-content;
+          padding: 1rem 0;
+      }
+
+      .testimonial-container:hover {
+          animation-play-state: paused;
+      }
+
+      .testimonial-card {
+          background: white;
+          padding: 1.5rem;
+          border-radius: 15px;
+          box-shadow: var(--box-shadow);
+          min-width: 280px;
+          max-width: 350px;
+          flex-shrink: 0;
+          display: flex;
+          gap: 1rem;
+          align-items: flex-start;
+          text-align: left;
+      }
+
+      .testimonial-content {
+          font-style: italic;
+          color: #666;
+          font-size: 0.95rem;
+          line-height: 1.5;
+          margin: 0;
+          flex: 1;
+          word-wrap: break-word;
+          overflow-wrap: break-word;
+          white-space: normal;
+          max-width: 200px;
+      }
+
+      .testimonial-author {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.5rem;
+          min-width: 80px;
+          flex-shrink: 0;
+      }
+
+      .author-image {
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid var(--primary-color);
+      }
+
+      .author-info {
+          text-align: center;
+      }
+
+      .author-info h4 {
+          margin: 0;
+          color: var(--text-color);
+          font-size: 1.1rem;
+      }
+
+      .author-info p {
+          margin: 0;
+          color: #666;
+          font-size: 0.9rem;
+      }
+
+      @keyframes slideTestimonials {
+          0% {
+              transform: translateX(0);
+          }
+          100% {
+              transform: translateX(calc(-280px * 10 - 2rem * 10));
+          }
+      }
+
+      .testimonials::before,
+      .testimonials::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          width: 50px;
+          height: 100%;
+          z-index: 2;
+          pointer-events: none;
+      }
+
+      .testimonials::before {
+          left: 0;
+          background: linear-gradient(to right, var(--background-color), transparent);
+      }
+
+      .testimonials::after {
+          right: 0;
+          background: linear-gradient(to left, var(--background-color), transparent);
+      }
+
+      @media screen and (max-width: 768px) {
+          .testimonial-card {
+              min-width: 300px;
+              flex-direction: column;
+              align-items: center;
+              text-align: center;
+          }
+
+          .testimonial-content {
+              text-align: center;
+          }
+
+          .testimonial-author {
+              flex-direction: row;
+              justify-content: center;
+              min-width: auto;
+          }
+      }
+
+      /* New CTA Section */
+      .cta-section {
+          padding: 5rem 2rem;
+          background: linear-gradient(135deg, #4cb050 10%, #333 100%);
+          text-align: center;
+          color: white;
+      }
+
+      .cta-content {
+          max-width: 800px;
+          margin: 0 auto;
+      }
+
+      .cta-content h2 {
+          font-size: 2.5rem;
+          margin-bottom: 1.5rem;
+      }
+
+      .cta-content p {
+          font-size: 1.2rem;
+          margin-bottom: 2rem;
+          opacity: 0.9;
+      }
+
+      .cta-buttons {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+      }
+
+      .cta-button {
+          padding: 1rem 2rem;
+          border-radius: 30px;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all 0.3s ease;
+      }
+
+      .cta-primary {
+          background: white;
+          color: var(--primary-color);
+      }
+
+      .cta-secondary {
+          background: transparent;
+          border: 2px solid white;
+          color: white;
+      }
+
+      .cta-button:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+          from {
+              opacity: 0;
+              transform: translateY(20px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      @keyframes scaleIn {
+          from {
+              transform: scale(0.9);
+              opacity: 0;
+          }
+          to {
+              transform: scale(1);
+              opacity: 1;
+          }
+      }
+
+      /* Responsive Design */
+      @media screen and (max-width: 768px) {
+          .hero-content h1 {
+              font-size: 2.5rem;
+          }
+
+          .hero-content p {
+              font-size: 1.1rem;
+          }
+
+          .feature-list {
+              grid-template-columns: 1fr;
+          }
+
+          .stats-container {
+              grid-template-columns: 1fr;
+          }
+
+          .testimonial-container {
+              flex-wrap: wrap;
+          }
+
+          .cta-buttons {
+              flex-direction: column;
+          }
+      }
+
+      /* Slider Navigation Dots */
+      .slider-dots {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        gap: 10px;
+        z-index: 2;
+      }
+
+      .dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .dot.active {
+        background: var(--primary-color);
+        transform: scale(1.2);
+      }
+
+      /* Add this to your existing styles */
+      @keyframes slideIn {
+        from {
+          transform: translateX(100%);
+        }
+        to {
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideOut {
+        from {
+          transform: translateX(0);
+        }
+        to {
+          transform: translateX(-100%);
         }
       }
     </style>
@@ -431,62 +1384,290 @@
           </div>
         </li>
         <li>
-          <i class="fas fa-right-to-bracket"></i><a href="login.html">Login</a>
+          <i class="fas fa-right-to-bracket"></i><a href="login.php">Login</a>
         </li>
-        
       </ul>
     </nav>
 
     <!-- Hero Section -->
     <header class="hero">
-      <img src="images/heroImg1.jpg" alt="Finance Tracker Hero" class="heroIMG" />
-      <div class="hero-content">
-        <h1>Track Your Finances Smartly</h1>
-        <p>
-          Manage budgets, monitor expenses, and get insights. All in one place.
-        </p>
-        <button id="hero-btn">
-          <a href="signup.html" class="btn primary">Get Started</a>
-          <i class="fa-solid fa-chevron-right"></i>
-        </button>
-      </div>
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <img src="images/heroImg1.jpg" alt="Finance Tracker Hero 1" class="heroIMG">
+            </div>
+            <div class="hero-slide">
+                <img src="images/heroImg2.jpg" alt="Finance Tracker Hero 2" class="heroIMG">
+            </div>
+            <div class="hero-slide">
+                <img src="images/heroImg3.jpg" alt="Finance Tracker Hero 3" class="heroIMG">
+            </div>
+        </div>
+        <div class="slider-dots">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+        <div class="hero-content">
+            <h1>Track Your Finances Smartly</h1>
+            <p>Manage budgets, monitor expenses, and get insights. All in one place.</p>
+            <button id="hero-btn">
+                <a href="signup.html" class="btn primary">Get Started</a>
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+        </div>
     </header>
 
     <!-- Features Section -->
     <section id="features" class="features">
-      <h2>Features</h2>
-      <div class="feature-list">
-        <div class="feature">
-          <i class="fas fa-wallet"></i>
-          <h3>Track Income & Expenses</h3>
-          <p>Log all transactions easily and get real-time totals.</p>
+        <h2>Why Choose Finance Tracker?</h2>
+        <div class="feature-list">
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Track Income & Expenses</h3>
+                    <p>Log all transactions easily and get real-time totals. Our intuitive interface makes financial tracking a breeze.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Reports & Analytics</h3>
+                    <p>Visualize your spending habits with beautiful charts and identify savings opportunities with AI-powered insights.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-user-lock"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Secure & Private</h3>
+                    <p>Your financial data is encrypted and protected with bank-level security measures. Your privacy is our priority.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-bell"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Smart Notifications</h3>
+                    <p>Get timely alerts about bill payments, budget limits, and important financial updates to stay on top of your finances.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Mobile Friendly</h3>
+                    <p>Access your financial data anywhere, anytime with our responsive mobile interface. Stay connected on the go.</p>
+                </div>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">
+                    <i class="fas fa-sync"></i>
+                </div>
+                <div class="feature-content">
+                    <h3>Auto Sync</h3>
+                    <p>Automatically sync your bank accounts and credit cards for real-time financial tracking and analysis.</p>
+                </div>
+            </div>
         </div>
-        <div class="feature">
-          <i class="fas fa-chart-line"></i>
-          <h3>Reports & Analytics</h3>
-          <p>
-            Visualize your spending habits and identify savings opportunities.
-          </p>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">50K+</div>
+                <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">$2M+</div>
+                <div class="stat-label">Transactions Tracked</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">User Satisfaction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
         </div>
-        <div class="feature">
-          <i class="fas fa-user-lock"></i>
-          <h3>Secure & Private</h3>
-          <p>Your financial data is encrypted and protected.</p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <h2>What Our Users Say</h2>
+        <div class="testimonial-container">
+            <div class="testimonial-card">
+                <p class="testimonial-content">"Finance Tracker has completely transformed how I manage my money. The insights are invaluable!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/1.jpg" alt="Sarah Johnson" class="author-image">
+                    <div class="author-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Financial Analyst</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The best financial tracking app I've ever used. Simple, powerful, and secure."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Michael Chen" class="author-image">
+                    <div class="author-info">
+                        <h4>Michael Chen</h4>
+                        <p>Small Business Owner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"Finally, a finance app that's both powerful and easy to use. Highly recommended!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/2.jpg" alt="Emily Rodriguez" class="author-image">
+                    <div class="author-info">
+                        <h4>Emily Rodriguez</h4>
+                        <p>Freelance Designer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The automated reports save me hours every month. A game-changer for my business!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/2.jpg" alt="David Wilson" class="author-image">
+                    <div class="author-info">
+                        <h4>David Wilson</h4>
+                        <p>Entrepreneur</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The mobile app is fantastic. I can track my expenses on the go with ease."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/3.jpg" alt="Lisa Thompson" class="author-image">
+                    <div class="author-info">
+                        <h4>Lisa Thompson</h4>
+                        <p>Marketing Manager</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The budget planning features are intuitive and effective. Love it!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/3.jpg" alt="James Anderson" class="author-image">
+                    <div class="author-info">
+                        <h4>James Anderson</h4>
+                        <p>Project Manager</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"Customer support is exceptional. They're always there when you need them."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/4.jpg" alt="Rachel Brown" class="author-image">
+                    <div class="author-info">
+                        <h4>Rachel Brown</h4>
+                        <p>HR Specialist</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The investment tracking features are exactly what I needed. Great tool!"</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/4.jpg" alt="Thomas Lee" class="author-image">
+                    <div class="author-info">
+                        <h4>Thomas Lee</h4>
+                        <p>Investment Advisor</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"The data visualization is top-notch. Makes understanding my finances so much easier."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/women/5.jpg" alt="Sophie Martin" class="author-image">
+                    <div class="author-info">
+                        <h4>Sophie Martin</h4>
+                        <p>Data Analyst</p>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-content">"Security features give me peace of mind. My financial data is in safe hands."</p>
+                <div class="testimonial-author">
+                    <img src="https://randomuser.me/api/portraits/men/5.jpg" alt="Robert Taylor" class="author-image">
+                    <div class="author-info">
+                        <h4>Robert Taylor</h4>
+                        <p>IT Security Expert</p>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Ready to Take Control of Your Finances?</h2>
+            <p>Join thousands of users who are already managing their money smarter with Finance Tracker.</p>
+            <div class="cta-buttons">
+                <a href="signup.html" class="cta-button cta-primary">Get Started Free</a>
+                <a href="#features" class="cta-button cta-secondary">Learn More</a>
+            </div>
+        </div>
     </section>
 
     <!-- About Section -->
     <section id="about" class="about">
-      <div class="about-content">
-        <h2>About Finance Tracker</h2>
-        <p>
-          Finance Tracker is your personal finance assistant, designed to
-          simplify budgeting, saving, and managing expenses. Whether you're a
-          student or a working professional, our tool empowers you to stay in
-          control of your money.
-        </p>
-      </div>
+        <div class="about-container">
+            <div class="about-header">
+                <h2>Our Story</h2>
+            </div>
+            <div class="about-content">
+                <p>
+                    Finance Tracker is your personal finance assistant, designed to simplify budgeting, saving, and managing expenses. 
+                    Whether you're a student or a working professional, our tool empowers you to stay in control of your money. 
+                    With advanced features and intuitive design, we make financial management accessible to everyone.
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Our Team</h3>
+                    <p>We're a diverse team of financial experts, developers, and designers passionate about making personal finance management easier for everyone.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Our Mission</h3>
+                    <p>To empower individuals with the tools and knowledge they need to achieve financial freedom and make informed decisions about their money.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-globe"></i>
+                    <h3>Global Impact</h3>
+                    <p>From students to entrepreneurs, we're helping people worldwide take control of their finances and build a secure financial future.</p>
+                </div>
+            </div>
+            <div class="about-stats">
+                <div class="stat-box">
+                    <h4>15+</h4>
+                    <p>Countries Served</p>
+                </div>
+                <div class="stat-box">
+                    <h4>25+</h4>
+                    <p>Team Members</p>
+                </div>
+                <div class="stat-box">
+                    <h4>5+</h4>
+                    <p>Years of Innovation</p>
+                </div>
+                <div class="stat-box">
+                    <h4>100%</h4>
+                    <p>User-Focused</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Footer Section -->
@@ -527,9 +1708,12 @@
           <h3>Contact</h3>
           <p>
             Email:
-            <a href="mailto:financetracker43@gmail.com"
-              >financetracker43@gmail.com</a
+            <a
+              href="mailto:financetracker43@gmail.com?subject=Finance%20Tracker%20Inquiry"
+              class="email-link"
             >
+              financetracker43@gmail.com
+            </a>
           </p>
           <p>Phone: +92-3061574937</p>
           <div class="social-icons">
@@ -552,33 +1736,54 @@
     </footer>
 
     <script>
-      // Theme Management
-      function initializeTheme() {
-        const savedTheme = localStorage.getItem("theme") || "light";
-        applyTheme(savedTheme);
+      function sendEmail(event) {
+        const email = "financetracker43@gmail.com";
+        const subject = "Finance Tracker Inquiry";
+        const body = "Hello, I would like to inquire about Finance Tracker...";
+
+        const mailtoLink = `mailto:${email}?subject=${encodeURIComponent(
+          subject
+        )}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+
+        // Remove preventDefault to allow default mailto behavior
+        return true;
       }
-
-      function applyTheme(theme) {
-        document.body.classList.remove("light-mode", "dark-mode");
-        document.body.classList.add(
-          theme === "dark" ? "dark-mode" : "light-mode"
-        );
-        localStorage.setItem("theme", theme);
-      }
-
-      // Listen for theme changes from other pages
-      window.addEventListener("themeChanged", (e) => {
-        applyTheme(e.detail.theme);
-      });
-
-      // Add storage event listener for theme changes
-      window.addEventListener("storage", (e) => {
-        if (e.key === "theme") {
-          applyTheme(e.newValue);
-        }
-      });
-      initializeTheme();
     </script>
+    <script src="scripts/theme.js"></script>
     <script src="scripts/nav.js"></script>
+    <script>
+        // Hero Slider Functionality
+        const slides = document.querySelectorAll('.hero-slide');
+        const dots = document.querySelectorAll('.dot');
+        let currentSlide = 0;
+        const slideInterval = 5000; // Change slide every 5 seconds
+
+        function showSlide(index) {
+            // Remove active class from all slides and dots
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            // Add active class to current slide and dot
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        // Add click event to dots
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                showSlide(currentSlide);
+            });
+        });
+
+        // Start automatic slideshow
+        setInterval(nextSlide, slideInterval);
+    </script>
   </body>
 </html>
